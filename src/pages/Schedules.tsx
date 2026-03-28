@@ -718,7 +718,7 @@ function AddScheduleModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
       due_months: dueMonths,
       start_date: new Date().toISOString().split('T')[0], // Today as start date
       is_auto_linked: false,
-      icon: '📅',
+      icon: 'calendar',
       notes: formData.notes?.trim() || null,
     };
 

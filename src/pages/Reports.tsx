@@ -1,4 +1,4 @@
-import { BarChart3, Download, Loader2, PieChart, TrendingDown, TrendingUp } from 'lucide-react';
+import { BarChart3, Download, Lightbulb, Loader2, PieChart, TrendingDown, TrendingUp } from 'lucide-react';
 import { useState } from 'react';
 import { useBudgetSummary, useExpenseCategories } from '../hooks/useBudget';
 import { useExpenseRecords, useMonthlyData, useRecentTransactions } from '../hooks/useMonthlyTracker';
@@ -297,7 +297,7 @@ export default function Reports() {
 
       {/* Financial Insights */}
       <div className="card p-4 sm:p-6 bg-gradient-to-r from-primary-50 to-primary-100 border-primary-200">
-        <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">💡 Financial Insights</h2>
+        <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2"><Lightbulb className="w-5 h-5 text-amber-500" /> Financial Insights</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           <div className="bg-white/60 rounded-lg p-3 sm:p-4">
             <p className="text-xs sm:text-sm text-gray-600 mb-2">Savings Rate</p>

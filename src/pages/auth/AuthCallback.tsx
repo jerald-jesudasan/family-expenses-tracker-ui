@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Loader2 } from 'lucide-react';
+import { AlertTriangle, Loader2 } from 'lucide-react';
 import apiClient from '../../lib/apiClient';
 
 export default function AuthCallback() {
@@ -33,7 +33,7 @@ export default function AuthCallback() {
       <div className="text-center">
         {error ? (
           <>
-            <div className="text-red-400 mb-4">⚠️</div>
+            <AlertTriangle className="w-12 h-12 text-red-400 mx-auto mb-4" />
             <h2 className="text-2xl font-semibold text-white mb-2">{error}</h2>
           </>
         ) : (

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LogOut, User } from 'lucide-react';
+import { LogOut, Pencil, User } from 'lucide-react';
 import { LogoutConfirmDialog } from '../components/ui/ConfirmDialog';
 import Modal, { FormInput, ModalActions } from '../components/ui/Modal';
 import { useAuth } from '../contexts/AuthContext';
@@ -114,7 +114,7 @@ function EditProfileModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Edit Profile" icon="✏️" size="md">
+    <Modal isOpen={isOpen} onClose={onClose} title="Edit Profile" icon={<Pencil className="w-5 h-5" />} size="md">
       <form onSubmit={handleSubmit}>
         <div className="space-y-4">
           {error && <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700">{error}</div>}

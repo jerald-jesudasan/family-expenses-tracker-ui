@@ -43,9 +43,9 @@ export async function getFamilyMembers(familyId: string): Promise<FamilyMember[]
   } catch (e) { handleApiError(e); }
 }
 
-export async function inviteFamilyMember(familyId: string, email: string, role: string, relationship: string): Promise<FamilyInvitation> {
+export async function addFamilyMember(familyId: string, name: string, email: string, role: string, relationship: string): Promise<FamilyMember> {
   try {
-    const { data } = await apiClient.post(`/families/${familyId}/invite`, { email, role, relationship });
+    const { data } = await apiClient.post(`/families/${familyId}/members`, { name, email, role, relationship });
     return data;
   } catch (e) { handleApiError(e); }
 }

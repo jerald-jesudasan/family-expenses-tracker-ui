@@ -377,7 +377,7 @@ export default function MonthlyTracker() {
             Plan: {formatCurrency(summary.totalExpected)}
           </div>
           <div className={`text-xs sm:text-sm font-medium mt-1 ${summary.totalReceived >= summary.totalExpected ? 'text-emerald-600' : 'text-amber-600'}`}>
-            {summary.totalReceived >= summary.totalExpected ? '🟢' : '🟡'} {formatCurrency(summary.totalReceived - summary.totalExpected)}
+            <span className={`inline-block w-2 h-2 rounded-full mr-1 ${summary.totalReceived >= summary.totalExpected ? 'bg-emerald-500' : 'bg-amber-400'}`} />{formatCurrency(summary.totalReceived - summary.totalExpected)}
           </div>
         </div>
 
@@ -388,7 +388,7 @@ export default function MonthlyTracker() {
             Plan: {formatCurrency(summary.totalPlanned)}
           </div>
           <div className={`text-xs sm:text-sm font-medium mt-1 ${summary.totalSpent <= summary.totalPlanned ? 'text-emerald-600' : 'text-rose-600'}`}>
-            {summary.totalSpent <= summary.totalPlanned ? '🟢' : '🔴'} {formatCurrency(summary.totalPlanned - summary.totalSpent)}
+            <span className={`inline-block w-2 h-2 rounded-full mr-1 ${summary.totalSpent <= summary.totalPlanned ? 'bg-emerald-500' : 'bg-rose-500'}`} />{formatCurrency(summary.totalPlanned - summary.totalSpent)}
           </div>
         </div>
 

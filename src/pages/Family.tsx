@@ -147,8 +147,8 @@ export default function Family() {
               <div key={member.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 bg-gray-50 rounded-xl">
                 <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0 w-full sm:w-auto">
                   <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-white text-sm sm:text-base font-semibold flex-shrink-0 ${member.role === 'admin' ? 'bg-gradient-to-br from-primary-500 to-primary-700' :
-                      member.role === 'member' ? 'bg-gradient-to-br from-success-500 to-success-700' :
-                        'bg-gradient-to-br from-gray-500 to-gray-700'
+                    member.role === 'member' ? 'bg-gradient-to-br from-success-500 to-success-700' :
+                      'bg-gradient-to-br from-gray-500 to-gray-700'
                     }`}>
                     {member.avatar}
                   </div>
@@ -227,8 +227,8 @@ export default function Family() {
             <div key={role} className="p-4 bg-gray-50 rounded-xl">
               <div className="flex items-center gap-2 mb-2">
                 <Shield className={`w-5 h-5 flex-shrink-0 ${role === 'admin' ? 'text-primary-600' :
-                    role === 'member' ? 'text-success-600' :
-                      'text-gray-600'
+                  role === 'member' ? 'text-success-600' :
+                    'text-gray-600'
                   }`} />
                 <h3 className="font-semibold text-gray-900 text-sm sm:text-base">{label}</h3>
               </div>
@@ -307,20 +307,21 @@ function AddMemberModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
     setSuccess('');
 
     try {
-      await apiClient.post(`/families/${family.id}/invite`, {
+      await apiClient.post(`/families/${family.id}/members`, {
+        name: formData.name,
         email: formData.email,
         role: formData.role,
         relationship: formData.relationship,
       });
 
-      setSuccess('Invitation sent successfully!');
+      setSuccess('Member added successfully!');
       setTimeout(() => {
         onClose();
         setFormData({ name: '', email: '', phone: '', role: 'member', relationship: 'Other' });
         setSuccess('');
       }, 2000);
     } catch (err: any) {
-      setError(err.message || 'Failed to send invitation');
+      setError(err.message || 'Failed to add member');
     } finally {
       setIsSubmitting(false);
     }
@@ -334,7 +335,7 @@ function AddMemberModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={handleClose} title="Add Family Member" icon="👨‍👩‍👧‍👦" size="md">
+    <Modal isOpen={isOpen} onClose={handleClose} title="Add Family Member" icon={<Users className="w-5 h-5" />} size="md">
       <form onSubmit={handleSubmit}>
         <div className="space-y-4">
           {error && (
@@ -398,15 +399,15 @@ function AddMemberModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
             required
           />
 
-          <div className="p-4 bg-primary-50 rounded-lg">
+          {/* <div className="p-4 bg-primary-50 rounded-lg">
             <p className="text-sm text-primary-700">
-              An invitation will be sent to the email address provided. When they sign up, they will automatically join your family.
+               An invitation will be sent to the email address provided. When they sign up, they will automatically join your family.
             </p>
-          </div>
+          </div> */}
 
           <ModalActions
             onCancel={handleClose}
-            submitLabel="Send Invitation"
+            submitLabel="Add Member"
             isLoading={isSubmitting}
           />
         </div>
@@ -424,7 +425,7 @@ function EditMemberModal({ isOpen, onClose, member }: { isOpen: boolean; onClose
   });
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Edit Family Member" icon="✏️" size="md">
+    <Modal isOpen={isOpen} onClose={onClose} title="Edit Family Member" icon={<Pencil className="w-5 h-5" />} size="md">
       <div className="space-y-4">
         <FormInput
           label="Full Name"

@@ -393,7 +393,7 @@ function UploadDocumentModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
   });
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Upload Document" icon="📄" size="md">
+    <Modal isOpen={isOpen} onClose={onClose} title="Upload Document" icon={<FileText className="w-5 h-5" />} size="md">
       <div className="space-y-6">
         {/* Dropzone */}
         <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-primary-400 transition-colors cursor-pointer">
